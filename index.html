@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¡Sobrevive Español!</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #1d2671, #c33764);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+    }
+
+    .game {
+        width: min(900px, 94%);
+        background: rgba(20, 20, 35, 0.95);
+        border-radius: 25px;
+        padding: 30px;
+        box-shadow: 0 15px 50px rgba(0,0,0,.4);
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 42px;
+        margin: 5px 0;
+    }
+
+    .subtitle {
+        text-align: center;
+        color: #ccc;
+        margin-bottom: 25px;
+    }
+
+    .stats {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 25px;
+        flex-wrap: wrap;
+    }
+
+    .stat {
+        background: #292942;
+        padding: 12px 18px;
+        border-radius: 12px;
+        flex: 1;
+        text-align: center;
+        min-width: 120px;
+    }
+
+    .question-box {
+        background: #f5f5f5;
+        color: #222;
+        border-radius: 18px;
+        padding: 35px;
+        text-align: center;
+        min-height: 280px;
+    }
+
+    .category {
+        font-size: 14px;
+        color: #777;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    .question {
+        font-size: 32px;
+        font-weight: bold;
+        margin: 25px 0;
+    }
+
+    .answers {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    button {
+        border: none;
+        border-radius: 12px;
+        padding: 16px;
+        font-size: 18px;
+        cursor: pointer;
+        transition: .15s;
+    }
+
+    .answer {
+        background: #e8e8f2;
+        color: #222;
+    }
+
+    .answer:hover {
+        transform: translateY(-3px);
+        background: #d2d2e8;
+    }
+
+    .correct {
+        background: #4caf50 !important;
+        color: white !important;
+    }
+
+    .wrong {
+        background: #e53935 !important;
+        color: white !important;
+    }
+
+    .feedback {
+        margin-top: 20px;
+        font-size: 20px;
+        font-weight: bold;
+        min-height: 30px;
+    }
+
+    .next {
+        background: #ffca28;
+        color: #222;
+        margin-top: 15px;
+        display: none;
+        font-weight: bold;
+    }
+
+    .next:hover {
+        background: #ffd95c;
+    }
+
+    .start-screen,
+    .game-over {
+        text-align: center;
+    }
+
+    .start-screen p,
+    .game-over p {
+        font-size: 19px;
+        color: #ddd;
+        line-height: 1.6;
+    }
+
+    .start {
+        background: #ffca28;
+        color: #222;
+        font-size: 22px;
+        font-weight: bold;
+        padding: 18px 40px;
+        margin-top: 15px;
+    }
+
+    .start:hover {
+        transform: scale(1.05);
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .progress {
+        height: 10px;
+        background: #444;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+
+    .progress-bar {
+        height: 100%;
+        width: 0%;
+        background: #ffca28;
+        transition: width .3s;
+    }
+
+    .streak {
+        color: #ffca28;
+    }
+
+    @media (max-width: 600px) {
+        .answers {
+            grid-template-columns: 1fr;
+        }
+
+        .question {
+            font-size: 25px;
+        }
+
+        h1 {
+            font-size: 32px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="game">
+
+    <!-- START SCREEN -->
+    <div id="startScreen" class="start-screen">
+
+        <h1>🇪🇸 ¡Sobrevive Español!</h1>
+
+        <div class="subtitle">
+            Spanish 1–2 Vocabulary Challenge
+        </div>
+
+        <p>
+            Your mission is simple: survive a full Spanish class
+            without embarrassing yourself.
+        </p>
+
+        <p>
+            Answer questions correctly to earn XP, build combos,
+            and level up.
+        </p>
+
+        <button class="start" onclick="startGame()">
+            ¡EMPEZAR!
+        </button>
+
+    </div>
+
+
+    <!-- GAME SCREEN -->
+    <div id="gameScreen" class="hidden">
+
+        <h1>🇪🇸 ¡Sobrevive Español!</h1>
+
+        <div class="stats">
+
+            <div class="stat">
+                ❤️ Vidas
+                <div id="lives">❤️❤️❤️</div>
+            </div>
+
+            <div class="stat">
+                ⭐ XP
+                <div id="score">0</div>
+            </div>
+
+            <div class="stat">
+                🔥 Combo
+                <div id="streak">0</div>
+            </div>
+
+            <div class="stat">
+                📚 Nivel
+                <div id="level">1</div>
+            </div>
+
+        </div>
+
+        <div class="progress">
+            <div id="progressBar" class="progress-bar"></div>
+        </div>
+
+        <div class="question-box">
+
+            <div id="category" class="category">
+                VOCABULARIO
+            </div>
+
+            <div id="question" class="question">
+                Loading...
+            </div>
+
+            <div id="answers" class="answers"></div>
+
+            <div id="feedback" class="feedback"></div>
+
+            <button id="nextButton"
+                    class="next"
+                    onclick="nextQuestion()">
+                Siguiente →
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- GAME OVER -->
+    <div id="gameOver" class="game-over hidden">
+
+        <h1 id="finalTitle">🏆 ¡Terminaste!</h1>
+
+        <p id="finalScore"></p>
+        <p id="finalMessage"></p>
+
+        <button class="start" onclick="startGame()">
+            Jugar otra vez
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* ============================
+   VOCABULARY DATABASE
+   ============================ */
+
+const vocabulary = [
+
+    // BASICS
+    {es:"hola", en:"hello", category:"Saludos"},
+    {es:"adiós", en:"goodbye", category:"Saludos"},
+    {es:"gracias", en:"thank you", category:"Saludos"},
+    {es:"por favor", en:"please", category:"Saludos"},
+    {es:"buenos días", en:"good morning", category:"Saludos"},
+    {es:"buenas noches", en:"good night", category:"Saludos"},
+    {es:"¿cómo estás?", en:"how are you?", category:"Saludos"},
+    {es:"bien", en:"well / good", category:"Saludos"},
+    {es:"mal", en:"bad / badly", category:"Saludos"},
+
+    // SCHOOL
+    {es:"la escuela", en:"school", category:"Escuela"},
+    {es:"la clase", en:"class", category:"Escuela"},
+    {es:"el maestro", en:"teacher", category:"Escuela"},
+    {es:"el estudiante", en:"student", category:"Escuela"},
+    {es:"el libro", en:"book", category:"Escuela"},
+    {es:"el lápiz", en:"pencil", category:"Escuela"},
+    {es:"la mochila", en:"backpack", category:"Escuela"},
+    {es:"la tarea", en:"homework", category:"Escuela"},
+    {es:"el examen", en:"test", category:"Escuela"},
+    {es:"la biblioteca", en:"library", category:"Escuela"},
+
+    // FAMILY
+    {es:"la madre", en:"mother", category:"Familia"},
+    {es:"el padre", en:"father", category:"Familia"},
+    {es:"el hermano", en:"brother", category:"Familia"},
+    {es:"la hermana", en:"sister", category:"Familia"},
+    {es:"la abuela", en:"grandmother", category:"Familia"},
+    {es:"el abuelo", en:"grandfather", category:"Familia"},
+    {es:"el primo", en:"cousin", category:"Familia"},
+    {es:"la familia", en:"family", category:"Familia"},
+
+    // FOOD
+    {es:"la comida", en:"food", category:"Comida"},
+    {es:"el desayuno", en:"breakfast", category:"Comida"},
+    {es:"el almuerzo", en:"lunch", category:"Comida"},
+    {es:"la cena", en:"dinner", category:"Comida"},
+    {es:"el agua", en:"water", category:"Comida"},
+    {es:"la leche", en:"milk", category:"Comida"},
+    {es:"el pan", en:"bread", category:"Comida"},
+    {es:"el arroz", en:"rice", category:"Comida"},
+    {es:"el pollo", en:"chicken", category:"Comida"},
+    {es:"la manzana", en:"apple", category:"Comida"},
+    {es:"el queso", en:"cheese", category:"Comida"},
+
+    // WEATHER
+    {es:"hace frío", en:"it is cold", category:"Tiempo"},
+    {es:"hace calor", en:"it is hot", category:"Tiempo"},
+    {es:"hace sol", en:"it is sunny", category:"Tiempo"},
+    {es:"llueve", en:"it is raining", category:"Tiempo"},
+    {es:"nieva", en:"it is snowing", category:"Tiempo"},
+    {es:"está nublado", en:"it is cloudy", category:"Tiempo"},
+    {es:"el tiempo", en:"weather", category:"Tiempo"},
+
+    // CLOTHING
+    {es:"la camisa", en:"shirt", category:"Ropa"},
+    {es:"los pantalones", en:"pants", category:"Ropa"},
+    {es:"los zapatos", en:"shoes", category:"Ropa"},
+    {es:"el sombrero", en:"hat", category:"Ropa"},
+    {es:"la chaqueta", en:"jacket", category:"Ropa"},
+    {es:"el vestido", en:"dress", category:"Ropa"},
+
+    // PLACES
+    {es:"la casa", en:"house", category:"Lugares"},
+    {es:"el parque", en:"park", category:"Lugares"},
+    {es:"la tienda", en:"store", category:"Lugares"},
+    {es:"el restaurante", en:"restaurant", category:"Lugares"},
+    {es:"el supermercado", en:"supermarket", category:"Lugares"},
+    {es:"la ciudad", en:"city", category:"Lugares"},
+    {es:"la playa", en:"beach", category:"Lugares"},
+
+    // ACTIVITIES
+    {es:"leer", en:"to read", category:"Actividades"},
+    {es:"escribir", en:"to write", category:"Actividades"},
+    {es:"correr", en:"to run", category:"Actividades"},
+    {es:"nadar", en:"to swim", category:"Actividades"},
+    {es:"bailar", en:"to dance", category:"Actividades"},
+    {es:"cantar", en:"to sing", category:"Actividades"},
+    {es:"jugar", en:"to play", category:"Actividades"},
+    {es:"escuchar", en:"to listen", category:"Actividades"},
+    {es:"mirar", en:"to watch / look at", category:"Actividades"},
+
+    // COMMON VERBS
+    {es:"ser", en:"to be", category:"Verbos"},
+    {es:"estar", en:"to be", category:"Verbos"},
+    {es:"tener", en:"to have", category:"Verbos"},
+    {es:"hacer", en:"to do / make", category:"Verbos"},
+    {es:"ir", en:"to go", category:"Verbos"},
+    {es:"querer", en:"to want / love", category:"Verbos"},
+    {es:"poder", en:"to be able to / can", category:"Verbos"},
+    {es:"necesitar", en:"to need", category:"Verbos"},
+    {es:"gustar", en:"to like", category:"Verbos"},
+
+    // ADJECTIVES
+    {es:"grande", en:"big", category:"Adjetivos"},
+    {es:"pequeño", en:"small", category:"Adjetivos"},
+    {es:"alto", en:"tall", category:"Adjetivos"},
+    {es:"bajo", en:"short", category:"Adjetivos"},
+    {es:"rápido", en:"fast", category:"Adjetivos"},
+    {es:"lento", en:"slow", category:"Adjetivos"},
+    {es:"feliz", en:"happy", category:"Adjetivos"},
+    {es:"triste", en:"sad", category:"Adjetivos"},
+    {es:"fácil", en:"easy", category:"Adjetivos"},
+    {es:"difícil", en:"difficult", category:"Adjetivos"},
+
+    // TIME
+    {es:"hoy", en:"today", category:"Tiempo"},
+    {es:"mañana", en:"tomorrow", category:"Tiempo"},
+    {es:"ayer", en:"yesterday", category:"Tiempo"},
+    {es:"ahora", en:"now", category:"Tiempo"},
+    {es:"siempre", en:"always", category:"Tiempo"},
+    {es:"nunca", en:"never", category:"Tiempo"},
+
+    // NUMBERS
+    {es:"uno", en:"one", category:"Números"},
+    {es:"dos", en:"two", category:"Números"},
+    {es:"tres", en:"three", category:"Números"},
+    {es:"cuatro", en:"four", category:"Números"},
+    {es:"cinco", en:"five", category:"Números"},
+    {es:"diez", en:"ten", category:"Números"},
+    {es:"veinte", en:"twenty", category:"Números"},
+    {es:"cien", en:"one hundred", category:"Números"}
+
+];
+
+
+/* ============================
+   GAME VARIABLES
+   ============================ */
+
+let lives = 3;
+let score = 0;
+let streak = 0;
+let level = 1;
+let questionNumber = 0;
+
+let currentAnswer = "";
+let answered = false;
+
+const QUESTIONS_PER_GAME = 20;
+
+
+/* ============================
+   START GAME
+   ============================ */
+
+function startGame() {
+
+    lives = 3;
+    score = 0;
+    streak = 0;
+    level = 1;
+    questionNumber = 0;
+
+    document.getElementById("startScreen")
+        .classList.add("hidden");
+
+    document.getElementById("gameOver")
+        .classList.add("hidden");
+
+    document.getElementById("gameScreen")
+        .classList.remove("hidden");
+
+    updateStats();
+    nextQuestion();
+}
+
+
+/* ============================
+   NEXT QUESTION
+   ============================ */
+
+function nextQuestion() {
+
+    answered = false;
+
+    document.getElementById("feedback").textContent = "";
+
+    document.getElementById("nextButton").style.display = "none";
+
+    if (questionNumber >= QUESTIONS_PER_GAME) {
+        endGame();
+        return;
+    }
+
+    questionNumber++;
+
+    // Level increases every 5 questions
+    level = Math.min(4, Math.floor((questionNumber - 1) / 5) + 1);
+
+    updateStats();
+
+    const word =
+        vocabulary[Math.floor(Math.random() * vocabulary.length)];
+
+    currentAnswer = word.en;
+
+    let questionType;
+
+    if (level === 1) {
+        questionType = "es-en";
+    }
+    else if (level === 2) {
+        questionType =
+            Math.random() < 0.5 ? "es-en" : "en-es";
+    }
+    else {
+        questionType =
+            Math.random() < 0.5 ? "es-en" : "en-es";
+    }
+
+    const questionElement =
+        document.getElementById("question");
+
+    document.getElementById("category").textContent =
+        word.category;
+
+    if (questionType === "es-en") {
+
+        questionElement.textContent =
+            `¿Qué significa "${word.es}"?`;
+
+        createAnswers(word.en);
+
+    } else {
+
+        currentAnswer = word.es;
+
+        questionElement.textContent =
+            `"${word.en}" en español es...`;
+
+        createAnswers(word.es);
+    }
+
+    updateProgress();
+}
+
+
+/* ============================
+   CREATE ANSWERS
+   ============================ */
+
+function createAnswers(correct) {
+
+    const container =
+        document.getElementById("answers");
+
+    container.innerHTML = "";
+
+    let choices = [correct];
+
+    while (choices.length < 4) {
+
+        const random =
+            vocabulary[
+                Math.floor(Math.random() * vocabulary.length)
+            ];
+
+        const answer =
+            random.es === correct ||
+            random.en === correct
+                ? random.es
+                : random.en;
+
+        if (!choices.includes(answer)) {
+            choices.push(answer);
+        }
+    }
+
+    choices.sort(() => Math.random() - 0.5);
+
+    choices.forEach(choice => {
+
+        const button = document.createElement("button");
+
+        button.className = "answer";
+        button.textContent = choice;
+
+        button.onclick = () =>
+            checkAnswer(button, choice);
+
+        container.appendChild(button);
+    });
+}
+
+
+/* ============================
+   CHECK ANSWER
+   ============================ */
+
+function checkAnswer(button, answer) {
+
+    if (answered) return;
+
+    answered = true;
+
+    const buttons =
+        document.querySelectorAll(".answer");
+
+    buttons.forEach(btn => {
+        btn.disabled = true;
+    });
+
+    const feedback =
+        document.getElementById("feedback");
+
+    if (answer === currentAnswer) {
+
+        button.classList.add("correct");
+
+        streak++;
+
+        let points = 100;
+
+        // Combo bonus
+        points += streak * 25;
+
+        // Level bonus
+        points += (level - 1) * 50;
+
+        score += points;
+
+        feedback.textContent =
+            `¡Correcto! +${points} XP 🎉`;
+
+        feedback.style.color = "#2e7d32";
+
+        speakSpanish(currentAnswer);
+
+    } else {
+
+        button.classList.add("wrong");
+
+        streak = 0;
+        lives--;
+
+        feedback.textContent =
+            `❌ Incorrecto. La respuesta era: ${currentAnswer}`;
+
+        feedback.style.color = "#c62828";
+
+        buttons.forEach(btn => {
+
+            if (btn.textContent === currentAnswer) {
+                btn.classList.add("correct");
+            }
+
+        });
+
+        if (lives <= 0) {
+
+            setTimeout(() => {
+                endGame();
+            }, 1200);
+
+            return;
+        }
+    }
+
+    updateStats();
+
+    document.getElementById("nextButton")
+        .style.display = "inline-block";
+}
+
+
+/* ============================
+   UPDATE STATS
+   ============================ */
+
+function updateStats() {
+
+    document.getElementById("score")
+        .textContent = score;
+
+    document.getElementById("level")
+        .textContent = level;
+
+    document.getElementById("streak")
+        .textContent = streak;
+
+    document.getElementById("lives")
+        .textContent =
+        "❤️".repeat(lives) +
+        "🖤".repeat(3 - lives);
+}
+
+
+/* ============================
+   PROGRESS BAR
+   ============================ */
+
+function updateProgress() {
+
+    const percentage =
+        ((questionNumber - 1) / QUESTIONS_PER_GAME) * 100;
+
+    document.getElementById("progressBar")
+        .style.width = percentage + "%";
+}
+
+
+/* ============================
+   SPANISH PRONUNCIATION
+   ============================ */
+
+function speakSpanish(text) {
+
+    if (!("speechSynthesis" in window)) return;
+
+    const speech =
+        new SpeechSynthesisUtterance(text);
+
+    speech.lang = "es-ES";
+    speech.rate = 0.85;
+
+    speechSynthesis.cancel();
+    speechSynthesis.speak(speech);
+}
+
+
+/* ============================
+   GAME OVER
+   ============================ */
+
+function endGame() {
+
+    document.getElementById("gameScreen")
+        .classList.add("hidden");
+
+    document.getElementById("gameOver")
+        .classList.remove("hidden");
+
+    document.getElementById("finalScore")
+        .textContent =
+        `Puntuación final: ${score} XP`;
+
+    let message;
+
+    if (score >= 4000) {
+        message =
+            "🏆 ¡Maestro del español! Tu cerebro acaba de desbloquear el modo bilingüe.";
+    }
+    else if (score >= 2500) {
+        message =
+            "🔥 ¡Excelente! Tu español está bastante fuerte.";
+    }
+    else if (score >= 1500) {
+        message =
+            "👍 ¡Buen trabajo! Sigue practicando y mejorarás rápido.";
+    }
+    else {
+        message =
+            "📚 Hay trabajo por hacer. Incluso los hablantes nativos tuvieron que aprender alguna vez.";
+    }
+
+    document.getElementById("finalMessage")
+        .textContent = message;
+}
+
+</script>
+
+</body>
+</html>
