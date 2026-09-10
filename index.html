@@ -437,7 +437,556 @@ const vocabulary = [
 
 ];
 
+/* ============================
+   SENTENCE STRUCTURE DATABASE
+   ============================ */
 
+const sentenceStructures = [
+
+    // =====================================
+    // BASIC SENTENCE STRUCTURE
+    // SUBJECT + VERB + OBJECT
+    // =====================================
+
+    {
+        sentence: "Yo estudio español.",
+        translation: "I study Spanish.",
+        type: "Basic Structure",
+        structure: "Subject + Verb + Object"
+    },
+
+    {
+        sentence: "Ella come una manzana.",
+        translation: "She eats an apple.",
+        type: "Basic Structure",
+        structure: "Subject + Verb + Object"
+    },
+
+    {
+        sentence: "Nosotros miramos una película.",
+        translation: "We watch a movie.",
+        type: "Basic Structure",
+        structure: "Subject + Verb + Object"
+    },
+
+    {
+        sentence: "Mi hermano juega videojuegos.",
+        translation: "My brother plays video games.",
+        type: "Basic Structure",
+        structure: "Subject + Verb + Object"
+    },
+
+    {
+        sentence: "Ellos escuchan música.",
+        translation: "They listen to music.",
+        type: "Basic Structure",
+        structure: "Subject + Verb + Object"
+    },
+
+
+    // =====================================
+    // SER
+    // =====================================
+
+    {
+        sentence: "Yo soy estudiante.",
+        translation: "I am a student.",
+        type: "Ser",
+        structure: "Subject + ser + noun"
+    },
+
+    {
+        sentence: "Ella es inteligente.",
+        translation: "She is intelligent.",
+        type: "Ser",
+        structure: "Subject + ser + adjective"
+    },
+
+    {
+        sentence: "Nosotros somos amigos.",
+        translation: "We are friends.",
+        type: "Ser",
+        structure: "Subject + ser + noun"
+    },
+
+    {
+        sentence: "Ellos son de Texas.",
+        translation: "They are from Texas.",
+        type: "Ser",
+        structure: "Subject + ser + de + place"
+    },
+
+
+    // =====================================
+    // ESTAR
+    // =====================================
+
+    {
+        sentence: "Yo estoy cansado.",
+        translation: "I am tired.",
+        type: "Estar",
+        structure: "Subject + estar + adjective"
+    },
+
+    {
+        sentence: "Ella está feliz.",
+        translation: "She is happy.",
+        type: "Estar",
+        structure: "Subject + estar + adjective"
+    },
+
+    {
+        sentence: "Estamos en la escuela.",
+        translation: "We are at school.",
+        type: "Estar",
+        structure: "Subject + estar + location"
+    },
+
+    {
+        sentence: "El libro está en la mesa.",
+        translation: "The book is on the table.",
+        type: "Estar",
+        structure: "Object + estar + location"
+    },
+
+
+    // =====================================
+    // TENER
+    // =====================================
+
+    {
+        sentence: "Yo tengo quince años.",
+        translation: "I am fifteen years old.",
+        type: "Tener",
+        structure: "Subject + tener + number + años"
+    },
+
+    {
+        sentence: "Ella tiene un hermano.",
+        translation: "She has a brother.",
+        type: "Tener",
+        structure: "Subject + tener + noun"
+    },
+
+    {
+        sentence: "Tenemos mucha tarea.",
+        translation: "We have a lot of homework.",
+        type: "Tener",
+        structure: "Subject + tener + noun"
+    },
+
+    {
+        sentence: "Ellos tienen dos perros.",
+        translation: "They have two dogs.",
+        type: "Tener",
+        structure: "Subject + tener + number + noun"
+    },
+
+
+    // =====================================
+    // GUSTAR
+    // =====================================
+
+    {
+        sentence: "Me gusta la música.",
+        translation: "I like music.",
+        type: "Gustar",
+        structure: "Indirect object pronoun + gusta + singular noun"
+    },
+
+    {
+        sentence: "Me gustan los videojuegos.",
+        translation: "I like video games.",
+        type: "Gustar",
+        structure: "Indirect object pronoun + gustan + plural noun"
+    },
+
+    {
+        sentence: "A María le gusta bailar.",
+        translation: "María likes to dance.",
+        type: "Gustar",
+        structure: "A + person + le + gusta + infinitive"
+    },
+
+    {
+        sentence: "No me gusta la tarea.",
+        translation: "I don't like homework.",
+        type: "Gustar",
+        structure: "No + indirect object pronoun + gusta + noun"
+    },
+
+
+    // =====================================
+    // QUERER + INFINITIVE
+    // =====================================
+
+    {
+        sentence: "Quiero comer.",
+        translation: "I want to eat.",
+        type: "Querer",
+        structure: "Subject + querer + infinitive"
+    },
+
+    {
+        sentence: "Ella quiere viajar.",
+        translation: "She wants to travel.",
+        type: "Querer",
+        structure: "Subject + querer + infinitive"
+    },
+
+    {
+        sentence: "Queremos jugar videojuegos.",
+        translation: "We want to play video games.",
+        type: "Querer",
+        structure: "Subject + querer + infinitive"
+    },
+
+
+    // =====================================
+    // PODER + INFINITIVE
+    // =====================================
+
+    {
+        sentence: "Puedo nadar.",
+        translation: "I can swim.",
+        type: "Poder",
+        structure: "Subject + poder + infinitive"
+    },
+
+    {
+        sentence: "Ella puede hablar español.",
+        translation: "She can speak Spanish.",
+        type: "Poder",
+        structure: "Subject + poder + infinitive"
+    },
+
+    {
+        sentence: "No podemos ir.",
+        translation: "We cannot go.",
+        type: "Poder",
+        structure: "No + poder + infinitive"
+    },
+
+
+    // =====================================
+    // IR + A + INFINITIVE
+    // =====================================
+
+    {
+        sentence: "Voy a estudiar.",
+        translation: "I am going to study.",
+        type: "Ir + a",
+        structure: "Subject + ir + a + infinitive"
+    },
+
+    {
+        sentence: "Vamos a comer.",
+        translation: "We are going to eat.",
+        type: "Ir + a",
+        structure: "Subject + ir + a + infinitive"
+    },
+
+    {
+        sentence: "Ella va a viajar mañana.",
+        translation: "She is going to travel tomorrow.",
+        type: "Ir + a",
+        structure: "Subject + ir + a + infinitive + time"
+    },
+
+
+    // =====================================
+    // REFLEXIVE VERBS
+    // =====================================
+
+    {
+        sentence: "Me levanto a las siete.",
+        translation: "I get up at seven.",
+        type: "Reflexive Verbs",
+        structure: "Reflexive pronoun + conjugated verb + time"
+    },
+
+    {
+        sentence: "Ella se ducha por la mañana.",
+        translation: "She showers in the morning.",
+        type: "Reflexive Verbs",
+        structure: "Subject + reflexive pronoun + verb + time"
+    },
+
+    {
+        sentence: "Nos acostamos a las diez.",
+        translation: "We go to bed at ten.",
+        type: "Reflexive Verbs",
+        structure: "Subject + reflexive pronoun + verb + time"
+    },
+
+
+    // =====================================
+    // PRESENT PROGRESSIVE
+    // =====================================
+
+    {
+        sentence: "Estoy estudiando.",
+        translation: "I am studying.",
+        type: "Present Progressive",
+        structure: "Estar + present participle"
+    },
+
+    {
+        sentence: "Ella está comiendo.",
+        translation: "She is eating.",
+        type: "Present Progressive",
+        structure: "Estar + present participle"
+    },
+
+    {
+        sentence: "Estamos jugando.",
+        translation: "We are playing.",
+        type: "Present Progressive",
+        structure: "Estar + present participle"
+    },
+
+
+    // =====================================
+    // PRETERITE
+    // =====================================
+
+    {
+        sentence: "Ayer estudié español.",
+        translation: "Yesterday I studied Spanish.",
+        type: "Preterite",
+        structure: "Time expression + preterite verb + object"
+    },
+
+    {
+        sentence: "Comí una pizza.",
+        translation: "I ate a pizza.",
+        type: "Preterite",
+        structure: "Preterite verb + object"
+    },
+
+    {
+        sentence: "Ella habló con su amiga.",
+        translation: "She talked with her friend.",
+        type: "Preterite",
+        structure: "Subject + preterite verb + object"
+    },
+
+    {
+        sentence: "Fuimos al parque.",
+        translation: "We went to the park.",
+        type: "Preterite",
+        structure: "Preterite ir + a + location"
+    },
+
+
+    // =====================================
+    // IMPERFECT
+    // =====================================
+
+    {
+        sentence: "Cuando era niño, jugaba mucho.",
+        translation: "When I was a child, I used to play a lot.",
+        type: "Imperfect",
+        structure: "Cuando + imperfect + imperfect"
+    },
+
+    {
+        sentence: "Yo estudiaba todos los días.",
+        translation: "I used to study every day.",
+        type: "Imperfect",
+        structure: "Subject + imperfect + frequency"
+    },
+
+    {
+        sentence: "Hacía calor.",
+        translation: "It was hot.",
+        type: "Imperfect",
+        structure: "Imperfect weather expression"
+    },
+
+
+    // =====================================
+    // COMPARISONS
+    // =====================================
+
+    {
+        sentence: "Juan es más alto que Pedro.",
+        translation: "Juan is taller than Pedro.",
+        type: "Comparisons",
+        structure: "Subject + más + adjective + que"
+    },
+
+    {
+        sentence: "Mi casa es menos grande que tu casa.",
+        translation: "My house is less big than your house.",
+        type: "Comparisons",
+        structure: "Subject + menos + adjective + que"
+    },
+
+    {
+        sentence: "El español es tan interesante como el inglés.",
+        translation: "Spanish is as interesting as English.",
+        type: "Comparisons",
+        structure: "Subject + tan + adjective + como"
+    },
+
+
+    // =====================================
+    // NEGATIVE SENTENCES
+    // =====================================
+
+    {
+        sentence: "No tengo tiempo.",
+        translation: "I don't have time.",
+        type: "Negatives",
+        structure: "No + verb + object"
+    },
+
+    {
+        sentence: "Nunca como pescado.",
+        translation: "I never eat fish.",
+        type: "Negatives",
+        structure: "Negative word + verb + object"
+    },
+
+    {
+        sentence: "Tampoco me gusta correr.",
+        translation: "I don't like running either.",
+        type: "Negatives",
+        structure: "Tampoco + indirect object + verb"
+    },
+
+
+    // =====================================
+    // QUESTIONS
+    // =====================================
+
+    {
+        sentence: "¿Dónde vives?",
+        translation: "Where do you live?",
+        type: "Questions",
+        structure: "Question word + verb + subject"
+    },
+
+    {
+        sentence: "¿Qué haces?",
+        translation: "What are you doing?",
+        type: "Questions",
+        structure: "Question word + verb"
+    },
+
+    {
+        sentence: "¿Cuándo estudias?",
+        translation: "When do you study?",
+        type: "Questions",
+        structure: "Question word + verb"
+    },
+
+    {
+        sentence: "¿Por qué estás cansado?",
+        translation: "Why are you tired?",
+        type: "Questions",
+        structure: "¿Por qué + verb + adjective?"
+    },
+
+
+    // =====================================
+    // POR VS PARA
+    // =====================================
+
+    {
+        sentence: "Este regalo es para ti.",
+        translation: "This gift is for you.",
+        type: "Por vs. Para",
+        structure: "Para + recipient"
+    },
+
+    {
+        sentence: "Estudio para el examen.",
+        translation: "I study for the test.",
+        type: "Por vs. Para",
+        structure: "Para + purpose"
+    },
+
+    {
+        sentence: "Caminamos por el parque.",
+        translation: "We walk through the park.",
+        type: "Por vs. Para",
+        structure: "Por + movement through a place"
+    },
+
+
+    // =====================================
+    // DIRECT OBJECTS
+    // =====================================
+
+    {
+        sentence: "Yo veo la película.",
+        translation: "I watch the movie.",
+        type: "Direct Objects",
+        structure: "Subject + verb + direct object"
+    },
+
+    {
+        sentence: "La veo.",
+        translation: "I watch it.",
+        type: "Direct Objects",
+        structure: "Subject + direct object pronoun + verb"
+    },
+
+    {
+        sentence: "Los compro.",
+        translation: "I buy them.",
+        type: "Direct Objects",
+        structure: "Subject + direct object pronoun + verb"
+    },
+
+
+    // =====================================
+    // INDIRECT OBJECTS
+    // =====================================
+
+    {
+        sentence: "Le doy el libro a Juan.",
+        translation: "I give the book to Juan.",
+        type: "Indirect Objects",
+        structure: "Indirect object pronoun + verb + object + a + person"
+    },
+
+    {
+        sentence: "Me das el lápiz.",
+        translation: "You give me the pencil.",
+        type: "Indirect Objects",
+        structure: "Indirect object pronoun + verb + object"
+    },
+
+
+    // =====================================
+    // COMMANDS
+    // =====================================
+
+    {
+        sentence: "Escucha la música.",
+        translation: "Listen to the music.",
+        type: "Commands",
+        structure: "Affirmative command + object"
+    },
+
+    {
+        sentence: "Come la comida.",
+        translation: "Eat the food.",
+        type: "Commands",
+        structure: "Affirmative command + object"
+    },
+
+    {
+        sentence: "No hables.",
+        translation: "Don't talk.",
+        type: "Commands",
+        structure: "No + negative command"
+    }
+
+];
 /* ============================
    GAME VARIABLES
    ============================ */
@@ -489,7 +1038,6 @@ function nextQuestion() {
     answered = false;
 
     document.getElementById("feedback").textContent = "";
-
     document.getElementById("nextButton").style.display = "none";
 
     if (questionNumber >= QUESTIONS_PER_GAME) {
@@ -499,10 +1047,36 @@ function nextQuestion() {
 
     questionNumber++;
 
-    // Level increases every 5 questions
-    level = Math.min(4, Math.floor((questionNumber - 1) / 5) + 1);
+    level = Math.min(
+        4,
+        Math.floor((questionNumber - 1) / 5) + 1
+    );
 
     updateStats();
+
+    /*
+       Levels 1–2:
+       Mostly vocabulary
+
+       Levels 3–4:
+       Increasing number of sentence questions
+    */
+
+    let useSentence = false;
+
+    if (level === 3) {
+        useSentence = Math.random() < 0.40;
+    }
+
+    if (level === 4) {
+        useSentence = Math.random() < 0.70;
+    }
+
+    if (useSentence) {
+        sentenceQuestion();
+        updateProgress();
+        return;
+    }
 
     const word =
         vocabulary[Math.floor(Math.random() * vocabulary.length)];
@@ -523,6 +1097,31 @@ function nextQuestion() {
             Math.random() < 0.5 ? "es-en" : "en-es";
     }
 
+    const questionElement =
+        document.getElementById("question");
+
+    document.getElementById("category").textContent =
+        word.category;
+
+    if (questionType === "es-en") {
+
+        questionElement.textContent =
+            `¿Qué significa "${word.es}"?`;
+
+        createAnswers(word.en);
+
+    } else {
+
+        currentAnswer = word.es;
+
+        questionElement.textContent =
+            `"${word.en}" en español es...`;
+
+        createAnswers(word.es);
+    }
+
+    updateProgress();
+}
     const questionElement =
         document.getElementById("question");
 
@@ -771,7 +1370,147 @@ function endGame() {
     document.getElementById("finalMessage")
         .textContent = message;
 }
+/* ============================
+   SENTENCE QUESTIONS
+   ============================ */
 
+function sentenceQuestion() {
+
+    answered = false;
+
+    document.getElementById("feedback").textContent = "";
+    document.getElementById("nextButton").style.display = "none";
+
+    const sentence =
+        sentenceStructures[
+            Math.floor(Math.random() * sentenceStructures.length)
+        ];
+
+    currentAnswer = sentence.translation;
+
+    document.getElementById("category").textContent =
+        sentence.type;
+
+    document.getElementById("question").textContent =
+        `"${sentence.sentence}" means...`;
+
+    createSentenceAnswers(sentence.translation);
+}
+
+
+/* ============================
+   SENTENCE ANSWERS
+   ============================ */
+
+function createSentenceAnswers(correct) {
+
+    const container =
+        document.getElementById("answers");
+
+    container.innerHTML = "";
+
+    let choices = [correct];
+
+    while (choices.length < 4) {
+
+        const random =
+            sentenceStructures[
+                Math.floor(Math.random() * sentenceStructures.length)
+            ];
+
+        if (!choices.includes(random.translation)) {
+            choices.push(random.translation);
+        }
+    }
+
+    choices.sort(() => Math.random() - 0.5);
+
+    choices.forEach(choice => {
+
+        const button =
+            document.createElement("button");
+
+        button.className = "answer";
+        button.textContent = choice;
+
+        button.onclick = () =>
+            checkSentenceAnswer(button, choice);
+
+        container.appendChild(button);
+    });
+}
+
+
+/* ============================
+   CHECK SENTENCE ANSWER
+   ============================ */
+
+function checkSentenceAnswer(button, answer) {
+
+    if (answered) return;
+
+    answered = true;
+
+    const buttons =
+        document.querySelectorAll(".answer");
+
+    buttons.forEach(btn => {
+        btn.disabled = true;
+    });
+
+    const feedback =
+        document.getElementById("feedback");
+
+    if (answer === currentAnswer) {
+
+        button.classList.add("correct");
+
+        streak++;
+
+        let points = 150 + (streak * 30);
+
+        score += points;
+
+        feedback.textContent =
+            `¡Correcto! +${points} XP 🧠`;
+
+        feedback.style.color = "#2e7d32";
+
+    } else {
+
+        button.classList.add("wrong");
+
+        streak = 0;
+        lives--;
+
+        feedback.textContent =
+            `❌ La respuesta correcta era: ${currentAnswer}`;
+
+        feedback.style.color = "#c62828";
+
+        buttons.forEach(btn => {
+
+            if (btn.textContent === currentAnswer) {
+                btn.classList.add("correct");
+            }
+
+        });
+
+        if (lives <= 0) {
+
+            setTimeout(() => {
+                endGame();
+            }, 1200);
+
+            return;
+        }
+    }
+
+    updateStats();
+
+    document.getElementById("nextButton")
+        .style.display = "inline-block";
+}
 </script>
 
 </body>
