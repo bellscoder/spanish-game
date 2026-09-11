@@ -1003,7 +1003,7 @@ let questionNumber = 0;
 let currentAnswer = "";
 let answered = false;
 
-const QUESTIONS_PER_GAME = 20;
+const QUESTIONS_PER_GAME = 45;
 
 
 /* ============================
@@ -1067,12 +1067,12 @@ function nextQuestion() {
 
     let useSentence = false;
 
-    if (level === 3) {
-        useSentence = Math.random() < 0.40;
+    if (level === 2) {
+        useSentence = Math.random() < 0.80;
     }
 
-    if (level === 4) {
-        useSentence = Math.random() < 0.70;
+    if (level === 3) {
+        useSentence = Math.random() < 0.95;
     }
 
     if (useSentence) {
@@ -1093,7 +1093,7 @@ function nextQuestion() {
     }
     else if (level === 2) {
         questionType =
-            Math.random() < 0.5 ? "es-en" : "en-es";
+            Math.random() < 0.6 ? "es-en" : "en-es";
     }
     else {
         questionType =
