@@ -990,6 +990,228 @@ const sentenceStructures = [
     }
 
 ];
+   const advancedVocabulary = [
+
+    // =========================
+    // EMOTIONS
+    // =========================
+
+    {es: "agobiado", en: "overwhelmed", category: "Emotions"},
+    {es: "aliviado", en: "relieved", category: "Emotions"},
+    {es: "avergonzado", en: "embarrassed", category: "Emotions"},
+    {es: "decepcionado", en: "disappointed", category: "Emotions"},
+    {es: "entusiasmado", en: "enthusiastic / excited", category: "Emotions"},
+    {es: "preocupado", en: "worried", category: "Emotions"},
+    {es: "sorprendido", en: "surprised", category: "Emotions"},
+    {es: "orgulloso", en: "proud", category: "Emotions"},
+    {es: "celoso", en: "jealous", category: "Emotions"},
+    {es: "confundido", en: "confused", category: "Emotions"},
+    {es: "frustrado", en: "frustrated", category: "Emotions"},
+    {es: "agradecido", en: "grateful", category: "Emotions"},
+    {es: "asustado", en: "frightened / scared", category: "Emotions"},
+    {es: "emocionado", en: "excited", category: "Emotions"},
+    {es: "tranquilo", en: "calm", category: "Emotions"},
+
+    // =========================
+    // PERSONALITY
+    // =========================
+
+    {es: "arrogante", en: "arrogant", category: "Personality"},
+    {es: "sincero", en: "sincere", category: "Personality"},
+    {es: "terco", en: "stubborn", category: "Personality"},
+    {es: "generoso", en: "generous", category: "Personality"},
+    {es: "impaciente", en: "impatient", category: "Personality"},
+    {es: "responsable", en: "responsible", category: "Personality"},
+    {es: "perezoso", en: "lazy", category: "Personality"},
+    {es: "orgulloso", en: "proud", category: "Personality"},
+    {es: "humilde", en: "humble", category: "Personality"},
+    {es: "curioso", en: "curious", category: "Personality"},
+    {es: "confiable", en: "trustworthy", category: "Personality"},
+    {es: "amable", en: "kind", category: "Personality"},
+    {es: "egoísta", en: "selfish", category: "Personality"},
+    {es: "tímido", en: "shy", category: "Personality"},
+    {es: "atrevido", en: "daring / bold", category: "Personality"},
+
+    // =========================
+    // ADVANCED VERBS
+    // =========================
+
+    {es: "aprovechar", en: "to take advantage of / make use of", category: "Advanced Verbs"},
+    {es: "lograr", en: "to achieve / manage to", category: "Advanced Verbs"},
+    {es: "evitar", en: "to avoid", category: "Advanced Verbs"},
+    {es: "suceder", en: "to happen", category: "Advanced Verbs"},
+    {es: "parecer", en: "to seem", category: "Advanced Verbs"},
+    {es: "recordar", en: "to remember", category: "Advanced Verbs"},
+    {es: "olvidar", en: "to forget", category: "Advanced Verbs"},
+    {es: "descubrir", en: "to discover", category: "Advanced Verbs"},
+    {es: "decidir", en: "to decide", category: "Advanced Verbs"},
+    {es: "intentar", en: "to try / attempt", category: "Advanced Verbs"},
+    {es: "conseguir", en: "to obtain / manage to get", category: "Advanced Verbs"},
+    {es: "mantener", en: "to maintain / keep", category: "Advanced Verbs"},
+    {es: "permitir", en: "to allow", category: "Advanced Verbs"},
+    {es: "reconocer", en: "to recognize", category: "Advanced Verbs"},
+    {es: "resolver", en: "to solve", category: "Advanced Verbs"},
+    {es: "recomendar", en: "to recommend", category: "Advanced Verbs"},
+    {es: "proteger", en: "to protect", category: "Advanced Verbs"},
+    {es: "construir", en: "to build", category: "Advanced Verbs"},
+    {es: "destruir", en: "to destroy", category: "Advanced Verbs"},
+    {es: "mejorar", en: "to improve", category: "Advanced Verbs"},
+    {es: "empeorar", en: "to get worse", category: "Advanced Verbs"},
+
+    // =========================
+    // REFLEXIVE / COMPLEX VERBS
+    // =========================
+
+    {es: "darse cuenta", en: "to realize", category: "Expressions"},
+    {es: "equivocarse", en: "to make a mistake", category: "Reflexive Verbs"},
+    {es: "acostumbrarse", en: "to get used to", category: "Reflexive Verbs"},
+    {es: "quejarse", en: "to complain", category: "Reflexive Verbs"},
+    {es: "divertirse", en: "to have fun", category: "Reflexive Verbs"},
+    {es: "sentirse", en: "to feel", category: "Reflexive Verbs"},
+    {es: "enamorarse", en: "to fall in love", category: "Reflexive Verbs"},
+    {es: "despertarse", en: "to wake up", category: "Reflexive Verbs"},
+    {es: "dormirse", en: "to fall asleep", category: "Reflexive Verbs"},
+    {es: "vestirse", en: "to get dressed", category: "Reflexive Verbs"},
+
+    // =========================
+    // ACADEMIC
+    // =========================
+
+    {es: "investigar", en: "to research / investigate", category: "Academic"},
+    {es: "explicar", en: "to explain", category: "Academic"},
+    {es: "demostrar", en: "to demonstrate / prove", category: "Academic"},
+    {es: "desarrollar", en: "to develop", category: "Academic"},
+    {es: "comparar", en: "to compare", category: "Academic"},
+    {es: "analizar", en: "to analyze", category: "Academic"},
+    {es: "describir", en: "to describe", category: "Academic"},
+    {es: "argumentar", en: "to argue", category: "Academic"},
+    {es: "conclusión", en: "conclusion", category: "Academic"},
+    {es: "evidencia", en: "evidence", category: "Academic"},
+    {es: "investigación", en: "research", category: "Academic"},
+    {es: "conocimiento", en: "knowledge", category: "Academic"},
+    {es: "experiencia", en: "experience", category: "Academic"},
+    {es: "resultado", en: "result", category: "Academic"},
+    {es: "problema", en: "problem", category: "Academic"},
+    {es: "solución", en: "solution", category: "Academic"},
+
+    // =========================
+    // EXPRESSIONS
+    // =========================
+
+    {es: "tener ganas de", en: "to feel like / want to", category: "Expressions"},
+    {es: "tener que", en: "to have to", category: "Expressions"},
+    {es: "acabar de", en: "to have just", category: "Expressions"},
+    {es: "dejar de", en: "to stop doing", category: "Expressions"},
+    {es: "volver a", en: "to do again", category: "Expressions"},
+    {es: "estar a punto de", en: "to be about to", category: "Expressions"},
+    {es: "darse prisa", en: "to hurry", category: "Expressions"},
+    {es: "tener miedo de", en: "to be afraid of", category: "Expressions"},
+    {es: "tener razón", en: "to be right", category: "Expressions"},
+    {es: "tener éxito", en: "to be successful", category: "Expressions"},
+    {es: "sin embargo", en: "however", category: "Expressions"},
+    {es: "por lo tanto", en: "therefore", category: "Expressions"},
+    {es: "de hecho", en: "in fact", category: "Expressions"},
+    {es: "por supuesto", en: "of course", category: "Expressions"},
+    {es: "en realidad", en: "actually / in reality", category: "Expressions"},
+
+    // =========================
+    // ADVANCED CONNECTORS
+    // =========================
+
+    {es: "aunque", en: "although / even though", category: "Advanced"},
+    {es: "mientras tanto", en: "meanwhile", category: "Advanced"},
+    {es: "a pesar de", en: "despite / in spite of", category: "Advanced"},
+    {es: "en lugar de", en: "instead of", category: "Advanced"},
+    {es: "de repente", en: "suddenly", category: "Advanced"},
+    {es: "al menos", en: "at least", category: "Advanced"},
+    {es: "en cuanto", en: "as soon as", category: "Advanced"},
+    {es: "antes de que", en: "before", category: "Advanced"},
+    {es: "después de que", en: "after", category: "Advanced"},
+    {es: "para que", en: "so that", category: "Advanced"},
+    {es: "sin que", en: "without", category: "Advanced"},
+    {es: "ya que", en: "since / given that", category: "Advanced"},
+    {es: "puesto que", en: "since / given that", category: "Advanced"},
+    {es: "mientras", en: "while", category: "Advanced"},
+    {es: "hasta que", en: "until", category: "Advanced"},
+
+    // =========================
+    // FALSE COGNATES
+    // =========================
+
+    {es: "actualmente", en: "currently", category: "False Cognates"},
+    {es: "embarazada", en: "pregnant", category: "False Cognates"},
+    {es: "éxito", en: "success", category: "False Cognates"},
+    {es: "sensible", en: "sensitive", category: "False Cognates"},
+    {es: "asistir", en: "to attend", category: "False Cognates"},
+    {es: "realizar", en: "to carry out / accomplish", category: "False Cognates"},
+    {es: "librería", en: "bookstore", category: "False Cognates"},
+    {es: "carpeta", en: "folder", category: "False Cognates"},
+    {es: "fábrica", en: "factory", category: "False Cognates"},
+    {es: "introducir", en: "to introduce / insert", category: "False Cognates"},
+    {es: "molestar", en: "to bother / annoy", category: "False Cognates"},
+
+    // =========================
+    // MULTIPLE-MEANING WORDS
+    // =========================
+
+    {es: "banco", en: "bank / bench", category: "Multiple Meanings"},
+    {es: "carta", en: "letter / menu / card", category: "Multiple Meanings"},
+    {es: "vela", en: "candle / sail", category: "Multiple Meanings"},
+    {es: "planta", en: "plant / floor of a building", category: "Multiple Meanings"},
+    {es: "llama", en: "flame / llama / calls", category: "Multiple Meanings"},
+    {es: "bajo", en: "short / low / under / bass", category: "Multiple Meanings"},
+    {es: "vino", en: "wine / came", category: "Multiple Meanings"},
+    {es: "sal", en: "salt / leave!", category: "Multiple Meanings"},
+    {es: "gato", en: "cat / jack", category: "Multiple Meanings"},
+    {es: "nada", en: "nothing / swims", category: "Multiple Meanings"},
+    {es: "cura", en: "cure / priest", category: "Multiple Meanings"},
+    {es: "radio", en: "radio / radius", category: "Multiple Meanings"},
+    {es: "capital", en: "capital / capital city", category: "Multiple Meanings"},
+
+    // =========================
+    // ABSTRACT NOUNS
+    // =========================
+
+    {es: "libertad", en: "freedom", category: "Abstract"},
+    {es: "igualdad", en: "equality", category: "Abstract"},
+    {es: "responsabilidad", en: "responsibility", category: "Abstract"},
+    {es: "oportunidad", en: "opportunity", category: "Abstract"},
+    {es: "decisión", en: "decision", category: "Abstract"},
+    {es: "posibilidad", en: "possibility", category: "Abstract"},
+    {es: "necesidad", en: "necessity / need", category: "Abstract"},
+    {es: "intención", en: "intention", category: "Abstract"},
+    {es: "opinión", en: "opinion", category: "Abstract"},
+    {es: "comportamiento", en: "behavior", category: "Abstract"},
+    {es: "situación", en: "situation", category: "Abstract"},
+    {es: "desarrollo", en: "development", category: "Abstract"},
+    {es: "sociedad", en: "society", category: "Abstract"},
+    {es: "medio ambiente", en: "environment", category: "Abstract"},
+    {es: "consecuencia", en: "consequence", category: "Abstract"},
+    {es: "beneficio", en: "benefit", category: "Abstract"},
+
+    // =========================
+    // ADVANCED ADJECTIVES
+    // =========================
+
+    {es: "increíble", en: "incredible", category: "Advanced Adjectives"},
+    {es: "impresionante", en: "impressive", category: "Advanced Adjectives"},
+    {es: "extraño", en: "strange / unusual", category: "Advanced Adjectives"},
+    {es: "sorprendente", en: "surprising", category: "Advanced Adjectives"},
+    {es: "necesario", en: "necessary", category: "Advanced Adjectives"},
+    {es: "posible", en: "possible", category: "Advanced Adjectives"},
+    {es: "imposible", en: "impossible", category: "Advanced Adjectives"},
+    {es: "peligroso", en: "dangerous", category: "Advanced Adjectives"},
+    {es: "conveniente", en: "convenient / suitable", category: "Advanced Adjectives"},
+    {es: "disponible", en: "available", category: "Advanced Adjectives"},
+    {es: "responsable", en: "responsible", category: "Advanced Adjectives"},
+    {es: "independiente", en: "independent", category: "Advanced Adjectives"},
+    {es: "similar", en: "similar", category: "Advanced Adjectives"},
+    {es: "diferente", en: "different", category: "Advanced Adjectives"},
+    {es: "común", en: "common", category: "Advanced Adjectives"},
+    {es: "actual", en: "current / present-day", category: "Advanced Adjectives"}
+
+];
+   vocabulary.push(...advancedVocabulary);
 /* ============================
    GAME VARIABLES
    ============================ */
