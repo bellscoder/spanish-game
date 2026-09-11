@@ -305,6 +305,9 @@
 
 <script>
 
+window.onerror = function(message, source, line) {
+   alert("GAME ERROR:\n" + message + "\nLine: " + line);
+};
 /* ============================
    VOCABULARY DATABASE
    ============================ */
