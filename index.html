@@ -1122,33 +1122,7 @@ function nextQuestion() {
 
     updateProgress();
 }
-    const questionElement =
-        document.getElementById("question");
-
-    document.getElementById("category").textContent =
-        word.category;
-
-    if (questionType === "es-en") {
-
-        questionElement.textContent =
-            `¿Qué significa "${word.es}"?`;
-
-        createAnswers(word.en);
-
-    } else {
-
-        currentAnswer = word.es;
-
-        questionElement.textContent =
-            `"${word.en}" en español es...`;
-
-        createAnswers(word.es);
-    }
-
-    updateProgress();
-}
-
-
+    
 /* ============================
    CREATE ANSWERS
    ============================ */
