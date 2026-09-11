@@ -1003,7 +1003,7 @@ let questionNumber = 0;
 let currentAnswer = "";
 let answered = false;
 
-const QUESTIONS_PER_GAME = 45;
+const QUESTIONS_PER_GAME = 50;
 
 
 /* ============================
@@ -1051,7 +1051,7 @@ function nextQuestion() {
     questionNumber++;
 
     level = Math.min(
-        4,
+        10,
         Math.floor((questionNumber - 1) / 5) + 1
     );
 
@@ -1067,14 +1067,10 @@ function nextQuestion() {
 
     let useSentence = false;
 
-    if (level === 2) {
-        useSentence = Math.random() < 0.80;
-    }
-
-    if (level === 3) {
-        useSentence = Math.random() < 0.95;
-    }
-
+   if (level >= 3) {
+    useSentence = Math.random() < (level - 2) * 0.15;
+   }
+   
     if (useSentence) {
         sentenceQuestion();
         updateProgress();
