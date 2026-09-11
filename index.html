@@ -1131,36 +1131,29 @@ function nextQuestion() {
    ============================ */
 
 function createAnswers(correct) {
-
-    const container =
-        document.getElementById("answers");
-
+    const container = document.getElementById("answers");
     container.innerHTML = "";
+
+    const correctIsSpanish = vocabulary.some(word => word.es === correct);
 
     let choices = [correct];
 
     while (choices.length < 4) {
-
         const random =
-            vocabulary[
-                Math.floor(Math.random() * vocabulary.length)
-            ];
+            vocabulary[Math.floor(Math.random() * vocabulary.length)];
 
-        const answer =
-            random.es === correct ||
-            random.en === correct
-                ? random.es
-                : random.en;
+        const randomAnswer = correctIsSpanish
+            ? random.es
+            : random.en;
 
-        if (!choices.includes(answer)) {
-            choices.push(answer);
+        if (!choices.includes(randomAnswer)) {
+            choices.push(randomAnswer);
         }
     }
 
     choices.sort(() => Math.random() - 0.5);
 
     choices.forEach(choice => {
-
         const button = document.createElement("button");
 
         button.className = "answer";
